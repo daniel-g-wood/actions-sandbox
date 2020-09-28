@@ -38,7 +38,7 @@ jobs:
           echo ${{ secrets.WEBHOOK_1 }}
 
       - name: Deploy to staging site
-        if: github.ref == 'staging'
+        if: github.ref == 'refs/heads/staging'
         run: |
           echo Deploying to staging
           echo ${{ secrets.WEBHOOK_2 }}
