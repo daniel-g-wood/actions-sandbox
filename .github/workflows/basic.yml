@@ -31,18 +31,15 @@ jobs:
           echo test, and deploy your project.
           echo github.ref
 
-      - name: Set environment variable based on master branch
+      - name: Deploy to production site
         if: github.ref == 'refs/heads/master'
-        run: echo Deploying to master
-        env:
-          TEST_ENV_VAR: master_branch
+        run: |
+          echo Deploying to master
+          echo ${{ secrets.WEBHOOK_1 }}
 
-      - name: Set environment variable based on staging branch
+      - name: Deploy to staging site
         if: github.ref == 'staging'
-        run: echo Deploying to staging
-        env:
-          TEST_ENV_VAR: staging_branch
-
-      - name: Deploy
-        run: echo ${{ TEST_ENV_VAR }}
+        run: |
+          echo Deploying to staging
+          echo ${{ secrets.WEBHOOK_2 }}
 
