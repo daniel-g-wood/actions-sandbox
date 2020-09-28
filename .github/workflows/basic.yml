@@ -30,3 +30,18 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
           echo github.ref
+
+      - name: Set environment variable based on master branch
+        if: github.ref == 'refs/heads/master'
+        env:
+          TEST_ENV_VAR: master_branch
+
+      - name: Set environment variable based on staging branch
+        if: github.ref == 'staging'
+        env:
+          TEST_ENV_VAR: staging_branch
+
+      - name: Deploy
+        run: echo ${ TEST_ENV_VAR }
+
+        
