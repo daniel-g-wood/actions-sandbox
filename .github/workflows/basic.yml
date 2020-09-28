@@ -44,5 +44,5 @@ jobs:
           TEST_ENV_VAR: staging_branch
 
       - name: Deploy
-        run: echo ${ TEST_ENV_VAR }
+        run: echo ${{ TEST_ENV_VAR }}
 
